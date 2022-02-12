@@ -11,13 +11,16 @@ module.exports = {
     ecmaVersion: 12,
   },
   plugins: ["@typescript-eslint"],
-  ignorePatterns: ["/.eslintrc.js"],
+  ignorePatterns: ["/.eslintrc.js", "/*.conf.js", "src/polyfills.ts"],
   rules: {
     "no-param-reassign": "off",
     "no-plusplus": "off",
     "no-restricted-syntax": "off",
     "consistent-return": "off",
-    "no-debugger": "off",
     "no-console": "off",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "@typescript-eslint/no-empty-function": "off",
   },
 };
