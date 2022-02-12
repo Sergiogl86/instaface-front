@@ -20,9 +20,6 @@
     </ng-container>
 
     <ng-template #openList>
-      <button class="btn btn-danger mb-5" (click)="closeListButton()">
-        Comentarios ({{ picture.messageId.length }})
-      </button>
       <ul class="list-group box-message">
         <li
           *ngFor="let message of picture.messageId"
@@ -43,6 +40,9 @@
           </p>
         </li>
       </ul>
+      <button class="btn btn-danger mt-3" (click)="closeListButton()">
+        Comentarios ({{ picture.messageId.length }})
+      </button>
     </ng-template>
     <ng-template #closeList>
       <button class="btn btn-primary" (click)="openListButton()">
