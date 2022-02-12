@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthService } from "./auth/auth.service";
 
 const routes: Routes = [
   {
@@ -16,8 +17,15 @@ const routes: Routes = [
       import("./pages/instaface-user/instaface-user.module").then(
         (m) => m.InstafaceUserModule
       ),
+    canActivate: [AuthService],
   },
-  { path: 'instaface-login', loadChildren: () => import('./pages/instaface-login/instaface-login.module').then(m => m.InstafaceLoginModule) },
+  {
+    path: "instaface-login",
+    loadChildren: () =>
+      import("./pages/instaface-login/instaface-login.module").then(
+        (m) => m.InstafaceLoginModule
+      ),
+  },
   {
     path: "**",
     redirectTo: "/instaface-home",

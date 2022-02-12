@@ -1,9 +1,20 @@
-<div class="card text-white bg-dark" style="width: 18rem">
+<div class="card text-white bg-dark mb-2" style="width: 18rem">
   <img
     class="card-img-top"
     src="{{ picture.urlPicture }}"
     alt="{{ picture.description }}"
   />
+  <div
+    class="recetas-detalle__editar"
+    *ngIf="(userStore.userPublico$ | async)?.id?.includes(picture.userId.id)"
+  >
+    <div class="box-trash-picture">
+      <i
+        class="fas fa-trash-alt fa-2x deletePicture"
+        (click)="deletePicture(picture.id)"
+      ></i>
+    </div>
+  </div>
   <div class="card-body">
     <h5 class="card-title">{{ picture.userId.nombreUsuario }}</h5>
     <img
