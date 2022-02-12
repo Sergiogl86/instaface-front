@@ -7,9 +7,9 @@ import { PictureStoreService } from "src/app/store/picture-store.service";
   styleUrls: ["./home-list.component.css"],
 })
 export class HomeListComponent implements OnInit {
-  constructor(public PicturesStore: PictureStoreService) {}
+  constructor(public picturesStore: PictureStoreService) {}
 
   ngOnInit(): void {
-    this.PicturesStore.getAllPicturesStore();
+    this.picturesStore.getAllPicturesStore();
   }
 }
