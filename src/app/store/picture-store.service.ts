@@ -20,4 +20,18 @@ export class PictureStoreService {
         this.listaPicturesPrivada.next(pictures),
     });
   }
+
+  getAllMessagesPicturesStore() {
+    this.picturesSvc.getAllMessagesPictures().subscribe({
+      next: (pictures: PictureInterface[]) =>
+        this.listaPicturesPrivada.next(pictures),
+    });
+  }
+
+  getAllNoMessagesPicturesStore() {
+    this.picturesSvc.getAllNoMessagesPictures().subscribe({
+      next: (pictures: PictureInterface[]) =>
+        this.listaPicturesPrivada.next(pictures),
+    });
+  }
 }

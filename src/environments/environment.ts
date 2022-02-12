@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   allPictures: "http://localhost:4500/instaface/picture/all",
+  allMessagesPictures: "http://localhost:4500/instaface/picture/allMessage",
+  allNoMessagesPictures: "http://localhost:4500/instaface/picture/allNoMessage",
 };
 
 /*
