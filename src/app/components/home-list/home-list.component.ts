@@ -12,4 +12,16 @@ export class HomeListComponent implements OnInit {
   ngOnInit(): void {
     this.picturesStore.getAllPicturesStore();
   }
+
+  allPictures() {
+    this.picturesStore.getAllPicturesStore();
+  }
+
+  messagesPictures() {
+    this.picturesStore.getAllMessagesPicturesStore();
+  }
+
+  noMessagesPictures() {
+    this.picturesStore.getAllNoMessagesPicturesStore();
+  }
 }

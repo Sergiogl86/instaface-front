@@ -1,4 +1,20 @@
-<p>home-list works!</p>
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <button class="btn btn-dark m-1" type="button" (click)="allPictures()">
+      Todas
+    </button>
+    <button class="btn btn-dark m-1" type="button" (click)="messagesPictures()">
+      Con mensajes
+    </button>
+    <button
+      class="btn btn-dark m-1"
+      type="button"
+      (click)="noMessagesPictures()"
+    >
+      Sin mensajes
+    </button>
+  </form>
+</nav>
 
 <ul class="box-pictures">
   <li

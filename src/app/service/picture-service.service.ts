@@ -12,4 +12,12 @@ export class PictureServiceService {
   getAllPictures(): Observable<any> {
     return this.http.get(environment.allPictures);
   }
+
+  getAllMessagesPictures(): Observable<any> {
+    return this.http.get(environment.allMessagesPictures);
+  }
+
+  getAllNoMessagesPictures(): Observable<any> {
+    return this.http.get(environment.allNoMessagesPictures);
+  }
 }
