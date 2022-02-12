@@ -10,6 +10,10 @@ import { Login } from "../interfaces/interfaces";
 export class UserServiceService {
   constructor(private http: HttpClient) {}
 
+  registerUserService(register: FormData): Observable<any> {
+    return this.http.post(environment.userRegister, register);
+  }
+
   loginUserService(login: Login): Observable<any> {
     return this.http.post(environment.userLogin, login);
   }

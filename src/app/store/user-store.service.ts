@@ -27,6 +27,12 @@ export class UserStoreService {
 
   constructor(private userSvc: UserServiceService, private route: Router) {}
 
+  registerUserStore(register: FormData) {
+    this.userSvc.registerUserService(register).subscribe({
+      next: () => this.route.navigate(["/instaface-login/login"]),
+    });
+  }
+
   loginUserStore(login: Login) {
     this.userSvc.loginUserService(login).subscribe({
       next: (res) => {
