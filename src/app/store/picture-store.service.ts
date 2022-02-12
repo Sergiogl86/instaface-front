@@ -1,7 +1,10 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
-import { PictureInterface } from "../interfaces/interfaces";
+import {
+  PictureInterface,
+  PostMessageInterface,
+} from "../interfaces/interfaces";
 import { PictureServiceService } from "../service/picture-service.service";
 
 @Injectable({
@@ -41,6 +44,28 @@ export class PictureStoreService {
 
   postDeletePictureStore(id: string) {
     this.picturesSvc.postDeletePictureService(id).subscribe({
+      next: () => {
+        const currentUrl = this.route.url;
+        this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.route.onSameUrlNavigation = "reload";
+        this.route.navigate([currentUrl]);
+      },
+    });
+  }
+
+  postMessageStore(message: PostMessageInterface) {
+    this.picturesSvc.postMessageService(message).subscribe({
+      next: () => {
+        const currentUrl = this.route.url;
+        this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.route.onSameUrlNavigation = "reload";
+        this.route.navigate([currentUrl]);
+      },
+    });
+  }
+
+  postDeleteMessageStore(id: string) {
+    this.picturesSvc.postDeleteMessageService(id).subscribe({
       next: () => {
         const currentUrl = this.route.url;
         this.route.routeReuseStrategy.shouldReuseRoute = () => false;

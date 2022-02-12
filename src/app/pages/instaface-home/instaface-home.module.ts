@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InstafaceHomeRoutingModule } from "./instaface-home-routing.module";
 import { InstafaceHomeComponent } from "./instaface-home.component";
 
@@ -13,6 +14,11 @@ import { PictureBoxHomeComponent } from "../../components/picture-box-home/pictu
     HomeListComponent,
     PictureBoxHomeComponent,
   ],
-  imports: [CommonModule, InstafaceHomeRoutingModule],
+  imports: [
+    CommonModule,
+    InstafaceHomeRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class InstafaceHomeModule {}

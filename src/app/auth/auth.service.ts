@@ -16,7 +16,10 @@ export class AuthService {
   authlogoutUser() {
     localStorage.removeItem("token");
     this.authPrivado.next(false);
-    this.route.navigate(["/instaface-home"]);
+    const currentUrl = this.route.url;
+    this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.route.onSameUrlNavigation = "reload";
+    this.route.navigate([currentUrl]);
   }
 
   userNavbar() {

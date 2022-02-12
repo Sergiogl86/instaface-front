@@ -32,6 +32,15 @@ export class UserStoreService {
     private route: Router
   ) {}
 
+  cleanUser() {
+    this.user.next({
+      nombre: "",
+      nombreUsuario: "",
+      urlFotoUser: "",
+      id: "",
+    });
+  }
+
   registerUserStore(register: FormData) {
     this.userSvc.registerUserService(register).subscribe({
       next: () => this.route.navigate(["/instaface-login/login"]),
@@ -42,9 +51,7 @@ export class UserStoreService {
     this.userSvc.loginUserService(login).subscribe({
       next: (res) => {
         localStorage.setItem("token", res.token);
-        const userData: UserInterface = jwtDecode(res.token);
         this.userError.next({});
-        console.log(userData);
         this.auth.userNavbar();
         this.getUserLoggedStore();
         this.route.navigate(["/instaface-user"]);
@@ -56,7 +63,6 @@ export class UserStoreService {
   getUserLoggedStore() {
     const token: any = localStorage.getItem("token");
     const userData: UserInterface = jwtDecode(token);
-    console.log(userData);
     this.user.next(userData);
   }
 }
