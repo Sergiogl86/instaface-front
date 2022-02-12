@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-instaface-home',
-  templateUrl: './instaface-home.component.html',
-  styleUrls: ['./instaface-home.component.css']
+  selector: "app-instaface-home",
+  templateUrl: "./instaface-home.component.html",
+  styleUrls: ["./instaface-home.component.css"],
 })
 export class InstafaceHomeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
