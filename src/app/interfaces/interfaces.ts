@@ -9,6 +9,7 @@ export interface PictureInterface {
 }
 
 export interface UserInterface {
+  nombre?: string;
   nombreUsuario: string;
   urlFotoUser: string;
   id: string;
@@ -19,4 +20,13 @@ export interface MessageInterface {
   messageDate: string;
   userId: UserInterface;
   id: string;
+}
+
+export interface Login {
+  nombreUsuario: string;
+  password: string;
+}
+
+export interface ErrorInterface {
+  error?: string;
 }
