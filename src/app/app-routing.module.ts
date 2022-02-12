@@ -17,6 +17,7 @@ const routes: Routes = [
         (m) => m.InstafaceUserModule
       ),
   },
+  { path: 'instaface-login', loadChildren: () => import('./pages/instaface-login/instaface-login.module').then(m => m.InstafaceLoginModule) },
   {
     path: "**",
     redirectTo: "/instaface-home",
