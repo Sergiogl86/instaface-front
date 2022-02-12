@@ -30,3 +30,10 @@ export interface Login {
 export interface ErrorInterface {
   error?: string;
 }
+
+export interface Register {
+  nombre: string;
+  nombreUsuario: string;
+  password: string;
+  userImg?: File;
+}
