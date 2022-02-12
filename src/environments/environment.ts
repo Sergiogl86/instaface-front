@@ -10,6 +10,8 @@ export const environment = {
   userLogin: "http://localhost:4500/instaface/users/login",
   userRegister: "http://localhost:4500/instaface/users/register",
   deletePicture: "http://localhost:4500/instaface/picture/borrar",
+  postMessage: "http://localhost:4500/instaface/message/crear",
+  postDeleteMessage: "http://localhost:4500/instaface/message/borrar",
 };
 
 /*

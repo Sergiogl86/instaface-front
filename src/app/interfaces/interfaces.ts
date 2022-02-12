@@ -37,3 +37,8 @@ export interface Register {
   password: string;
   userImg?: File;
 }
+
+export interface PostMessageInterface {
+  messageText: string;
+  pictureId: string;
+}

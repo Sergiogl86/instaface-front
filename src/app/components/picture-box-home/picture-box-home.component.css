@@ -10,4 +10,20 @@
   cursor: pointer;
   position: relative;
   left: 230px;
+  top: 15px;
+}
+
+.box-trash-message {
+  position: relative;
+}
+
+.deleteMessage {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+  width: 50px;
+  cursor: pointer;
+  position: absolute;
+  left: 190px;
+  top: 0px;
 }

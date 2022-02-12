@@ -5,7 +5,7 @@
     alt="{{ picture.description }}"
   />
   <div
-    class="recetas-detalle__editar"
+    class="picture-delete"
     *ngIf="(userStore.userPublico$ | async)?.id?.includes(picture.userId.id)"
   >
     <div class="box-trash-picture">
@@ -37,6 +37,22 @@
           style="list-style-type: none"
           class="list-group-item"
         >
+          <div
+            class="message-delete"
+            *ngIf="
+              (userStore.userPublico$ | async)?.id?.includes(
+                picture.userId.id
+              ) ||
+              (userStore.userPublico$ | async)?.id?.includes(message.userId.id)
+            "
+          >
+            <div class="box-trash-message">
+              <i
+                class="fas fa-trash-alt fa-2x deleteMessage"
+                (click)="deleteMessage(message.id)"
+              ></i>
+            </div>
+          </div>
           <img
             src="{{ message.userId.urlFotoUser }}"
             alt="{{ message.userId.urlFotoUser }}"
@@ -51,6 +67,38 @@
           </p>
         </li>
       </ul>
+      <div class="list-group">
+        <form
+          [formGroup]="messageForm"
+          autocomplete="off"
+          (ngSubmit)="onSudmit()"
+        >
+          <label class="form-label mt-3" for="messageText"
+            >Enviar Mensajes:</label
+          >
+          <input
+            class="form-control"
+            id="messageText"
+            type="text"
+            formControlName="messageText"
+            maxlength="100"
+          />
+
+          <div *ngIf="f.messageText.touched && f.messageText.invalid">
+            <small class="text-danger" *ngIf="f.messageText.errors?.required">
+              Necesaro mensajes...
+            </small>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="!messageForm.valid"
+            class="btn btn-success m-1"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
       <button class="btn btn-danger mt-3" (click)="closeListButton()">
         Comentarios ({{ picture.messageId.length }})
       </button>
