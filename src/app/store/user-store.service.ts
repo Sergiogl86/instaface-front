@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 import jwtDecode from "jwt-decode";
+import { AuthService } from "../auth/auth.service";
 import { ErrorInterface, Login, UserInterface } from "../interfaces/interfaces";
 
 import { UserServiceService } from "../service/user-service.service";
@@ -25,7 +26,11 @@ export class UserStoreService {
   public readonly userPublico$: Observable<UserInterface> =
     this.user.asObservable();
 
-  constructor(private userSvc: UserServiceService, private route: Router) {}
+  constructor(
+    private userSvc: UserServiceService,
+    private auth: AuthService,
+    private route: Router
+  ) {}
 
   registerUserStore(register: FormData) {
     this.userSvc.registerUserService(register).subscribe({
@@ -40,10 +45,18 @@ export class UserStoreService {
         const userData: UserInterface = jwtDecode(res.token);
         this.userError.next({});
         console.log(userData);
-        this.user.next(userData);
+        this.auth.userNavbar();
+        this.getUserLoggedStore();
         this.route.navigate(["/instaface-user"]);
       },
       error: (e) => this.userError.next(e.error),
     });
+  }
+
+  getUserLoggedStore() {
+    const token: any = localStorage.getItem("token");
+    const userData: UserInterface = jwtDecode(token);
+    console.log(userData);
+    this.user.next(userData);
   }
 }
