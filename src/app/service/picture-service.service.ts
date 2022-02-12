@@ -20,4 +20,14 @@ export class PictureServiceService {
   getAllNoMessagesPictures(): Observable<any> {
     return this.http.get(environment.allNoMessagesPictures);
   }
+
+  postDeletePictureService(pictureId: string): Observable<any> {
+    return this.http.post(
+      environment.deletePicture,
+      { pictureId },
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+  }
 }

@@ -9,6 +9,7 @@ export const environment = {
   allNoMessagesPictures: "http://localhost:4500/instaface/picture/allNoMessage",
   userLogin: "http://localhost:4500/instaface/users/login",
   userRegister: "http://localhost:4500/instaface/users/register",
+  deletePicture: "http://localhost:4500/instaface/picture/borrar",
 };
 
 /*

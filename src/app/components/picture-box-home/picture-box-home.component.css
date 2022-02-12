@@ -1,0 +1,13 @@
+.box-trash-picture {
+  position: relative;
+}
+
+.deletePicture {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+  width: 50px;
+  cursor: pointer;
+  position: relative;
+  left: 230px;
+}
