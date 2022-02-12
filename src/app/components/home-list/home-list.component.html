@@ -1,5 +1,10 @@
 <p>home-list works!</p>
 
-<p>
-  Listado de Pictures: {{ PicturesStore.listaPicturesPublica$ | async | json }}
-</p>
+<ul class="box-pictures">
+  <li
+    *ngFor="let picture of picturesStore.listaPicturesPublica$ | async"
+    style="list-style-type: none"
+  >
+    <app-picture-box-home [picture]="picture"> </app-picture-box-home>
+  </li>
+</ul>

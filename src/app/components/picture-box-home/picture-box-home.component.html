@@ -1,0 +1,53 @@
+<div class="card text-white bg-dark" style="width: 18rem">
+  <img
+    class="card-img-top"
+    src="{{ picture.urlPicture }}"
+    alt="{{ picture.description }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ picture.userId.nombreUsuario }}</h5>
+    <img
+      src="{{ picture.userId.urlFotoUser }}"
+      alt="{{ picture.userId.urlFotoUser }}"
+      class="rounded float-left"
+      height="45"
+    />
+    <p class="card-text">
+      {{ picture.description }}
+    </p>
+
+    <ng-container *ngIf="messageList; then openList; else closeList">
+    </ng-container>
+
+    <ng-template #openList>
+      <button class="btn btn-danger mb-5" (click)="closeListButton()">
+        Comentarios ({{ picture.messageId.length }})
+      </button>
+      <ul class="list-group box-message">
+        <li
+          *ngFor="let message of picture.messageId"
+          style="list-style-type: none"
+          class="list-group-item"
+        >
+          <img
+            src="{{ message.userId.urlFotoUser }}"
+            alt="{{ message.userId.urlFotoUser }}"
+            class="rounded float-left"
+            height="35"
+          />
+          <p>
+            {{ message.userId.nombreUsuario }}
+          </p>
+          <p>
+            {{ message.messageText }}
+          </p>
+        </li>
+      </ul>
+    </ng-template>
+    <ng-template #closeList>
+      <button class="btn btn-primary" (click)="openListButton()">
+        Comentarios ({{ picture.messageId.length }})
+      </button>
+    </ng-template>
+  </div>
+</div>
