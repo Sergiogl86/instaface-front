@@ -1,0 +1,36 @@
+<div class="card" style="width: 18rem">
+  <h2>Nueva...</h2>
+  <form [formGroup]="pictureForm" autocomplete="off" (ngSubmit)="onSudmit()">
+    <label class="form-label mt-3" for="nombre">Descripción:</label>
+    <input
+      class="form-control"
+      id="description"
+      type="text"
+      formControlName="description"
+      maxlength="100"
+    />
+
+    <div *ngIf="f.description.touched && f.description.invalid">
+      <small class="text-danger" *ngIf="f.description.errors?.required">
+        Descripción necesaria...
+      </small>
+    </div>
+
+    <label class="form-label mt-3" for="picture">Imagen:</label>
+    <input
+      class="form-control"
+      id="picture"
+      type="file"
+      name="picture"
+      (change)="onFileSelect($event)"
+    />
+
+    <button
+      type="submit"
+      [disabled]="!pictureForm.valid"
+      class="btn btn-success m-1"
+    >
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </form>
+</div>
