@@ -39,6 +39,7 @@ export class UserStoreService {
       urlFotoUser: "",
       id: "",
     });
+    this.route.navigate(["/instaface-home"]);
   }
 
   registerUserStore(register: FormData) {

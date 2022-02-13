@@ -42,6 +42,27 @@ export class PictureStoreService {
     });
   }
 
+  getUserPicturesStore() {
+    this.picturesSvc.getUserPictures().subscribe({
+      next: (pictures: PictureInterface[]) =>
+        this.listaPicturesPrivada.next(pictures),
+    });
+  }
+
+  getUserMessagesPicturesStore() {
+    this.picturesSvc.getUserMessagesPictures().subscribe({
+      next: (pictures: PictureInterface[]) =>
+        this.listaPicturesPrivada.next(pictures),
+    });
+  }
+
+  getUserNoMessagesPicturesStore() {
+    this.picturesSvc.getUserNoMessagesPictures().subscribe({
+      next: (pictures: PictureInterface[]) =>
+        this.listaPicturesPrivada.next(pictures),
+    });
+  }
+
   postDeletePictureStore(id: string) {
     this.picturesSvc.postDeletePictureService(id).subscribe({
       next: () => {

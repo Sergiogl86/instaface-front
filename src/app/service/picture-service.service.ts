@@ -22,6 +22,24 @@ export class PictureServiceService {
     return this.http.get(environment.allNoMessagesPictures);
   }
 
+  getUserPictures(): Observable<any> {
+    return this.http.get(environment.userPictures, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+  }
+
+  getUserMessagesPictures(): Observable<any> {
+    return this.http.get(environment.userMessagesPictures, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+  }
+
+  getUserNoMessagesPictures(): Observable<any> {
+    return this.http.get(environment.userNoMessagesPictures, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+  }
+
   postDeletePictureService(pictureId: string): Observable<any> {
     return this.http.post(
       environment.deletePicture,
