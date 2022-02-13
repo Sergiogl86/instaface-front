@@ -67,45 +67,51 @@
           </p>
         </li>
       </ul>
-      <div class="list-group">
-        <form
-          [formGroup]="messageForm"
-          autocomplete="off"
-          (ngSubmit)="onSudmit()"
-        >
-          <label class="form-label mt-3" for="messageText"
-            >Enviar Mensajes:</label
-          >
-          <input
-            class="form-control"
-            id="messageText"
-            type="text"
-            formControlName="messageText"
-            maxlength="100"
-          />
 
-          <div *ngIf="f.messageText.touched && f.messageText.invalid">
-            <small class="text-danger" *ngIf="f.messageText.errors?.required">
-              Necesaro mensajes...
-            </small>
-          </div>
+      <ng-container *ngIf="auth.authPublico$ | async; then loggedIn">
+      </ng-container>
 
-          <button
-            type="submit"
-            [disabled]="!messageForm.valid"
-            class="btn btn-success m-1"
+      <ng-template #loggedIn>
+        <div class="list-group">
+          <form
+            [formGroup]="messageForm"
+            autocomplete="off"
+            (ngSubmit)="onSudmit()"
           >
-            Enviar
-          </button>
-        </form>
-      </div>
+            <label class="form-label mt-3" for="messageText"
+              >Enviar Mensajes:</label
+            >
+            <input
+              class="form-control"
+              id="messageText"
+              type="text"
+              formControlName="messageText"
+              maxlength="100"
+            />
+
+            <div *ngIf="f.messageText.touched && f.messageText.invalid">
+              <small class="text-danger" *ngIf="f.messageText.errors?.required">
+                Necesaro mensajes...
+              </small>
+            </div>
+
+            <button
+              type="submit"
+              [disabled]="!messageForm.valid"
+              class="btn btn-success m-1"
+            >
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </ng-template>
       <button class="btn btn-danger mt-3" (click)="closeListButton()">
-        Comentarios ({{ picture.messageId.length }})
+        <i class="fa-solid fa-comment"></i> ({{ picture.messageId.length }})
       </button>
     </ng-template>
     <ng-template #closeList>
       <button class="btn btn-primary" (click)="openListButton()">
-        Comentarios ({{ picture.messageId.length }})
+        <i class="fa-solid fa-comment"></i> ({{ picture.messageId.length }})
       </button>
     </ng-template>
   </div>

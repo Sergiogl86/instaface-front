@@ -14,5 +14,6 @@ export class NavbarComponent implements OnInit {
 
   logoutUser() {
     this.auth.authlogoutUser();
+    this.userStore.cleanUser();
   }
 }
