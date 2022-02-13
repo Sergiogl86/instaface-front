@@ -42,3 +42,8 @@ export interface PostMessageInterface {
   messageText: string;
   pictureId: string;
 }
+
+export interface PostPictureInterface {
+  description: string;
+  picture?: File;
+}

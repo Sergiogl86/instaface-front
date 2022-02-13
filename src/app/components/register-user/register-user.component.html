@@ -1,64 +1,64 @@
-<p>register-user works!</p>
+<div class="card" style="width: 18rem">
+  <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="onSudmit()">
+    <label class="form-label mt-3" for="nombre">Nombre:</label>
+    <input
+      class="form-control"
+      id="nombre"
+      type="text"
+      formControlName="nombre"
+      maxlength="15"
+    />
 
-<form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="onSudmit()">
-  <label class="form-label mt-3" for="nombre">Nombre:</label>
-  <input
-    class="form-control"
-    id="nombre"
-    type="text"
-    formControlName="nombre"
-    maxlength="15"
-  />
+    <div *ngIf="f.nombre.touched && f.nombre.invalid">
+      <small class="text-danger" *ngIf="f.nombre.errors?.required">
+        Necesario nombre...
+      </small>
+    </div>
 
-  <div *ngIf="f.nombre.touched && f.nombre.invalid">
-    <small class="text-danger" *ngIf="f.nombre.errors?.required">
-      Necesario nombre...
-    </small>
-  </div>
+    <label class="form-label mt-3" for="nombreUsuario">Nombre Usuario:</label>
+    <input
+      class="form-control"
+      id="nombreUsuario"
+      type="text"
+      formControlName="nombreUsuario"
+      maxlength="15"
+    />
 
-  <label class="form-label mt-3" for="nombreUsuario">Nombre Usuario:</label>
-  <input
-    class="form-control"
-    id="nombreUsuario"
-    type="text"
-    formControlName="nombreUsuario"
-    maxlength="15"
-  />
+    <div *ngIf="f.nombreUsuario.touched && f.nombreUsuario.invalid">
+      <small class="text-danger" *ngIf="f.nombreUsuario.errors?.required">
+        Necesario nombre usuario...
+      </small>
+    </div>
 
-  <div *ngIf="f.nombreUsuario.touched && f.nombreUsuario.invalid">
-    <small class="text-danger" *ngIf="f.nombreUsuario.errors?.required">
-      Necesario nombre usuario...
-    </small>
-  </div>
+    <label class="form-label mt-3" for="password">Password:</label>
+    <input
+      class="form-control"
+      id="password"
+      type="password"
+      formControlName="password"
+    />
 
-  <label class="form-label mt-3" for="password">Password:</label>
-  <input
-    class="form-control"
-    id="password"
-    type="password"
-    formControlName="password"
-  />
+    <div *ngIf="f.password.touched && f.password.invalid">
+      <small class="text-danger" *ngIf="f.password.errors?.required">
+        Necesario password...
+      </small>
+    </div>
 
-  <div *ngIf="f.password.touched && f.password.invalid">
-    <small class="text-danger" *ngIf="f.password.errors?.required">
-      Necesario password...
-    </small>
-  </div>
+    <label class="form-label mt-3" for="userImg">Imagen:</label>
+    <input
+      class="form-control"
+      id="userImg"
+      type="file"
+      name="userImg"
+      (change)="onFileSelect($event)"
+    />
 
-  <label class="form-label mt-3" for="userImg">Imagen:</label>
-  <input
-    class="form-control"
-    id="userImg"
-    type="file"
-    name="userImg"
-    (change)="onFileSelect($event)"
-  />
-
-  <button
-    type="submit"
-    [disabled]="!registerForm.valid"
-    class="btn btn-dark m-1"
-  >
-    Registrar
-  </button>
-</form>
+    <button
+      type="submit"
+      [disabled]="!registerForm.valid"
+      class="btn btn-dark m-1"
+    >
+      Registrar
+    </button>
+  </form>
+</div>

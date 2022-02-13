@@ -65,4 +65,10 @@ export class PictureServiceService {
       }
     );
   }
+
+  postPictureService(picture: FormData): Observable<any> {
+    return this.http.post(environment.postPictureService, picture, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+  }
 }

@@ -16,6 +16,7 @@ export const environment = {
   deletePicture: "http://localhost:4500/instaface/picture/borrar",
   postMessage: "http://localhost:4500/instaface/message/crear",
   postDeleteMessage: "http://localhost:4500/instaface/message/borrar",
+  postPictureService: "http://localhost:4500/instaface/picture/publicar",
 };
 
 /*

@@ -95,4 +95,10 @@ export class PictureStoreService {
       },
     });
   }
+
+  postPictureStore(picture: FormData) {
+    this.picturesSvc.postPictureService(picture).subscribe({
+      next: () => this.route.navigate(["/instaface-user/pictures"]),
+    });
+  }
 }

@@ -1,39 +1,43 @@
-<p>login-user works!</p>
+<div class="card" style="width: 18rem">
+  <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="onSudmit()">
+    <label class="form-label mt-3" for="nombreUsuario">Nombre Usuario:</label>
+    <input
+      class="form-control"
+      id="nombreUsuario"
+      type="text"
+      formControlName="nombreUsuario"
+    />
 
-<form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="onSudmit()">
-  <label class="form-label mt-3" for="nombreUsuario">Nombre Usuario:</label>
-  <input
-    class="form-control"
-    id="nombreUsuario"
-    type="text"
-    formControlName="nombreUsuario"
-  />
+    <div *ngIf="f.nombreUsuario.touched && f.nombreUsuario.invalid">
+      <small class="text-danger" *ngIf="f.nombreUsuario.errors?.required">
+        Necesario nombre usuario...
+      </small>
+    </div>
 
-  <div *ngIf="f.nombreUsuario.touched && f.nombreUsuario.invalid">
-    <small class="text-danger" *ngIf="f.nombreUsuario.errors?.required">
-      Necesario nombre usuario...
-    </small>
-  </div>
+    <label class="form-label mt-3" for="password">Password:</label>
+    <input
+      class="form-control"
+      id="password"
+      type="password"
+      formControlName="password"
+    />
 
-  <label class="form-label mt-3" for="password">Password:</label>
-  <input
-    class="form-control"
-    id="password"
-    type="password"
-    formControlName="password"
-  />
+    <div *ngIf="f.password.touched && f.password.invalid">
+      <small class="text-danger" *ngIf="f.password.errors?.required">
+        Necesario password...
+      </small>
+    </div>
 
-  <div *ngIf="f.password.touched && f.password.invalid">
-    <small class="text-danger" *ngIf="f.password.errors?.required">
-      Necesario password...
-    </small>
-  </div>
+    <div *ngIf="(userStore.userErrorPublico$ | async)?.error">
+      <small class="text-danger"> Usuario o password incorrectos! </small>
+    </div>
 
-  <div *ngIf="(userStore.userErrorPublico$ | async)?.error">
-    <small class="text-danger"> Usuario o password incorrectos! </small>
-  </div>
-
-  <button type="submit" [disabled]="!loginForm.valid" class="btn btn-dark m-1">
-    Entrar
-  </button>
-</form>
+    <button
+      type="submit"
+      [disabled]="!loginForm.valid"
+      class="btn btn-dark m-1"
+    >
+      Entrar
+    </button>
+  </form>
+</div>
