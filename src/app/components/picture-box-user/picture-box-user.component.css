@@ -27,3 +27,8 @@
   left: 190px;
   top: 0px;
 }
+
+.message-button {
+  display: flex;
+  justify-content: flex-end;
+}

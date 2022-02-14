@@ -31,6 +31,46 @@
     </ng-container>
 
     <ng-template #openList>
+      <ng-container *ngIf="auth.authPublico$ | async; then loggedIn">
+      </ng-container>
+
+      <ng-template #loggedIn>
+        <div class="list-group">
+          <form
+            [formGroup]="messageForm"
+            autocomplete="off"
+            (ngSubmit)="onSudmit()"
+          >
+            <label class="form-label mt-3" for="messageText"
+              >Enviar Mensajes:</label
+            >
+            <textarea
+              class="form-control"
+              id="messageText"
+              type="text"
+              formControlName="messageText"
+              maxlength="100"
+            >
+            </textarea>
+
+            <div *ngIf="f.messageText.touched && f.messageText.invalid">
+              <small class="text-danger" *ngIf="f.messageText.errors?.required">
+                Necesaro mensajes...
+              </small>
+            </div>
+            <div class="message-button">
+              <button
+                type="submit"
+                [disabled]="!messageForm.valid"
+                class="btn btn-success m-1"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
       <ul class="list-group box-message">
         <li
           *ngFor="let message of picture.messageId"
@@ -67,53 +107,18 @@
           </p>
         </li>
       </ul>
-
-      <ng-container *ngIf="auth.authPublico$ | async; then loggedIn">
-      </ng-container>
-
-      <ng-template #loggedIn>
-        <div class="list-group">
-          <form
-            [formGroup]="messageForm"
-            autocomplete="off"
-            (ngSubmit)="onSudmit()"
-          >
-            <label class="form-label mt-3" for="messageText"
-              >Enviar Mensajes:</label
-            >
-            <textarea
-              class="form-control"
-              id="messageText"
-              type="text"
-              formControlName="messageText"
-              maxlength="100"
-            >
-            </textarea>
-
-            <div *ngIf="f.messageText.touched && f.messageText.invalid">
-              <small class="text-danger" *ngIf="f.messageText.errors?.required">
-                Necesaro mensajes...
-              </small>
-            </div>
-
-            <button
-              type="submit"
-              [disabled]="!messageForm.valid"
-              class="btn btn-success m-1"
-            >
-              <i class="fa-solid fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-      </ng-template>
-      <button class="btn btn-danger mt-3" (click)="closeListButton()">
-        <i class="fa-solid fa-comment"></i> ({{ picture.messageId.length }})
-      </button>
+      <div class="message-button">
+        <button class="btn btn-danger mt-3" (click)="closeListButton()">
+          <i class="fa-solid fa-comment"></i> ({{ picture.messageId.length }})
+        </button>
+      </div>
     </ng-template>
     <ng-template #closeList>
-      <button class="btn btn-primary" (click)="openListButton()">
-        <i class="fa-solid fa-comment"></i> ({{ picture.messageId.length }})
-      </button>
+      <div class="message-button">
+        <button class="btn btn-primary" (click)="openListButton()">
+          <i class="fa-solid fa-comment"></i> ({{ picture.messageId.length }})
+        </button>
+      </div>
     </ng-template>
   </div>
 </div>
