@@ -45,7 +45,6 @@ export class HomeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.picturesStore.getAllPicturesStore();
-
     this.startScroll();
   }
 
