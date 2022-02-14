@@ -1,26 +1,44 @@
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <button class="btn btn-dark m-1" type="button" (click)="allPictures()">
+    <button
+      class="btn btn-dark m-1"
+      type="button"
+      (click)="allPictures()"
+      title="Mostrar todas las publicaciones."
+    >
       <i class="far fa-comment-dots"></i>
     </button>
-    <button class="btn btn-dark m-1" type="button" (click)="messagesPictures()">
+    <button
+      class="btn btn-dark m-1"
+      type="button"
+      (click)="messagesPictures()"
+      title="Publicaciones comentadas."
+    >
       <i class="far fa-comments"></i>
     </button>
     <button
       class="btn btn-dark m-1"
       type="button"
       (click)="noMessagesPictures()"
+      title="Publicaciones no comentadas."
     >
       <i class="far fa-comment"></i>
     </button>
   </form>
 </nav>
 
-<ul class="box-pictures">
-  <li
-    *ngFor="let picture of picturesStore.listaPicturesPublica$ | async"
-    style="list-style-type: none"
+<div class="picture-list" infiniteScroll (scrolled)="onScrollDown()">
+  <ul class="box-pictures">
+    <li *ngFor="let picture of loadListPictures" style="list-style-type: none">
+      <app-picture-box-home [picture]="picture"> </app-picture-box-home>
+    </li>
+  </ul>
+
+  <button
+    *ngIf="showButton"
+    (click)="onScrollTop()"
+    class="picture-list__button"
   >
-    <app-picture-box-home [picture]="picture"> </app-picture-box-home>
-  </li>
-</ul>
+    <i class="fas fa-arrow-up"></i>
+  </button>
+</div>

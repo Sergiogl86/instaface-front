@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { InstafaceUserRoutingModule } from "./instaface-user-routing.module";
 import { InstafaceUserComponent } from "./instaface-user.component";
 import { UserListComponent } from "../../components/user-list/user-list.component";
@@ -20,6 +21,7 @@ import { CreatePictureComponent } from "../../components/create-picture/create-p
     InstafaceUserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    InfiniteScrollModule,
   ],
 })
 export class InstafaceUserModule {}
