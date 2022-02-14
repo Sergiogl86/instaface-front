@@ -1,0 +1,23 @@
+.picture-list__button {
+  border-radius: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  z-index: 3;
+  padding: 1rem;
+  background-color: grey;
+  border: 1px solid grey;
+  cursor: pointer;
+  font-size: 24px;
+  width: 45px;
+  height: 45px;
+  transition: all 0.4s ease-in-out;
+}
+
+.picture-list__button:hover {
+  background-color: black;
+  border: 1px solid black;
+}
